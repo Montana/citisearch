@@ -42,5 +42,15 @@ You should now see an `.html` file in the root folder, click on it and it should
 
 ![Screenshot 2024-12-05 at 12 26 13 PM](https://github.com/user-attachments/assets/49b1f037-fa6d-4b8a-a43d-e9110136aceb)
 
+You can also pick visualization type, you should see these three options when running `citimap`: 
+
+<img width="407" alt="Screenshot 2024-12-05 at 1 19 48 PM" src="https://github.com/user-attachments/assets/4b74417d-f53a-4c7a-83e6-1b0bde0d2363">
+
+You'll then see if I selected `2`, the visualization method is different, see below:
+
+<img width="616" alt="Screenshot 2024-12-05 at 1 20 39 PM" src="https://github.com/user-attachments/assets/0007caff-e093-4a6c-86dd-e9c3f1f5d613">
+
+This gives you more flexibility on how you perceive and sort the data.
+
 ## Author
 * Michael Mendy (c) 2024.
