@@ -27,7 +27,13 @@ You should see a list, ascending order:
 
 <img width="1084" alt="Screenshot 2024-12-05 at 12 26 23 PM" src="https://github.com/user-attachments/assets/beec4938-1311-4bc9-b2c8-21db78a1ca88">
 
-To get a list of Citibikes currently checked out, if you want to then get the visual map in HTML with the cross referencing I built in (cross ref of bikes being checked out, it should look like this, run the following:
+## List View
+
+To get a list of Citibikes currently checked out, this will be in plain text in a terminal of your choosing after running the above command.
+
+## Visual 
+
+if you want to then get the visual map in HTML with the cross referencing I built in (cross ref of bikes being checked out, it should look like this, run the following:
 
 ```bash
 python3 citimap.py
