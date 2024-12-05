@@ -8,7 +8,7 @@ I made this to help potentially agencies like the FBI `cat` and use `tail` or si
 
 ```bash
 Bike #421-6511 - LEFTDOCK @ 54 St & 6 Ave at 6:44 AM
-REDOCKED @6:52 AM at Madison Ave & 82nd 
+REDOCKED @ 6:52 AM at Madison Ave & 82nd 
 ```
 
 I hope this helps in finding the murderer of the CEO Brian Thompson, Brian Thompson was brutually murdered with a 9mm with a Silencer attached, whilst a stovepipe jam occured Brian Thompson still lost his life.
