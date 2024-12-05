@@ -2,7 +2,6 @@ import requests
 import folium
 from folium import plugins
 
-# URLs for live Citi Bike data
 STATION_STATUS_URL = "https://gbfs.citibikenyc.com/gbfs/en/station_status.json"
 STATION_INFO_URL = "https://gbfs.citibikenyc.com/gbfs/en/station_information.json"
 
@@ -14,7 +13,6 @@ def fetch_live_data(url):
 def create_map_with_cross_lines(stations):
     nyc_map = folium.Map(location=[40.730610, -73.935242], zoom_start=12)
 
-    # Add markers for each station
     for station in stations:
         folium.Marker(
             location=[station['latitude'], station['longitude']],
@@ -22,9 +20,8 @@ def create_map_with_cross_lines(stations):
             icon=folium.Icon(color='blue', icon='bicycle')
         ).add_to(nyc_map)
 
-    # Draw cross-referencing lines
     for i in range(len(stations)):
-        for j in range(i + 1, len(stations)):  # Avoid duplicates by starting at `i + 1`
+        for j in range(i + 1, len(stations)): 
             start = stations[i]
             end = stations[j]
             folium.PolyLine(
@@ -34,10 +31,9 @@ def create_map_with_cross_lines(stations):
                 opacity=0.5
             ).add_to(nyc_map)
 
-    # Add minimap
-    plugins.MiniMap().add_to(nyc_map)
 
-    # Save the map
+plugins.MiniMap().add_to(nyc_map)
+
     nyc_map.save("citi_bike_map_with_cross_lines.html")
     print("Map with cross-referencing lines saved as 'citi_bike_map_with_cross_lines.html'.")
 
@@ -56,8 +52,7 @@ def main():
         bikes = status_data.get(station_id, 0)
         stations.append({'name': name, 'latitude': lat, 'longitude': lon, 'bikes': bikes})
 
-    create_map_with_cross_lines(stations[:50])  # Limit to 50 stations for readability
+    create_map_with_cross_lines(stations[:50])  #y
 
 if __name__ == "__main__":
     main()
-
