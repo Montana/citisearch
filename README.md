@@ -38,6 +38,7 @@ if you want to then get the visual map in HTML with the cross referencing I buil
 ```bash
 python3 citimap.py
 ```
+
 You should now see an `.html` file in the root folder, click on it and it should look like this: 
 
 ![Screenshot 2024-12-05 at 12 26 13 PM](https://github.com/user-attachments/assets/49b1f037-fa6d-4b8a-a43d-e9110136aceb)
