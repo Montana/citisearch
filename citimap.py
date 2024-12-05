@@ -10,9 +10,7 @@ def fetch_live_data(url):
     response.raise_for_status()
     return response.json()
 
-def create_map_with_cross_lines(stations):
-    nyc_map = folium.Map(location=[40.730610, -73.935242], zoom_start=12)
-
+def create_station_markers(stations, nyc_map):
     for station in stations:
         folium.Marker(
             location=[station['latitude'], station['longitude']],
@@ -20,8 +18,20 @@ def create_map_with_cross_lines(stations):
             icon=folium.Icon(color='blue', icon='bicycle')
         ).add_to(nyc_map)
 
+def create_simple_lines(stations, nyc_map):
+    for i in range(len(stations) - 1):
+        start = stations[i]
+        end = stations[i + 1]
+        folium.PolyLine(
+            [[start['latitude'], start['longitude']], [end['latitude'], end['longitude']]],
+            color="blue",
+            weight=4,
+            opacity=0.8
+        ).add_to(nyc_map)
+
+def create_cross_lines(stations, nyc_map):
     for i in range(len(stations)):
-        for j in range(i + 1, len(stations)): 
+        for j in range(i + 1, len(stations)):
             start = stations[i]
             end = stations[j]
             folium.PolyLine(
@@ -31,11 +41,20 @@ def create_map_with_cross_lines(stations):
                 opacity=0.5
             ).add_to(nyc_map)
 
+def create_map(stations, mode):
+    nyc_map = folium.Map(location=[40.730610, -73.935242], zoom_start=12)
 
-plugins.MiniMap().add_to(nyc_map)
+    create_station_markers(stations, nyc_map)
 
-    nyc_map.save("citi_bike_map_with_cross_lines.html")
-    print("Map with cross-referencing lines saved as 'citi_bike_map_with_cross_lines.html'.")
+    if mode == 2:
+        create_simple_lines(stations, nyc_map)
+    elif mode == 3:
+        create_cross_lines(stations, nyc_map)
+
+    plugins.MiniMap().add_to(nyc_map)
+    file_name = f"citi_bike_map_mode_{mode}.html"
+    nyc_map.save(file_name)
+    print(f"Map saved as '{file_name}'.")
 
 def main():
     print("Fetching live Citi Bike data...")
@@ -52,7 +71,17 @@ def main():
         bikes = status_data.get(station_id, 0)
         stations.append({'name': name, 'latitude': lat, 'longitude': lon, 'bikes': bikes})
 
-    create_map_with_cross_lines(stations[:50])  #y
+    print("\nChoose a visualization mode:")
+    print("1: Station markers only")
+    print("2: Station markers with simple connecting lines")
+    print("3: Station markers with cross-referencing lines")
+    mode = int(input("Enter your choice (1, 2, or 3): "))
+
+    if mode not in [1, 2, 3]:
+        print("Invalid choice. Exiting.")
+        return
+
+    create_map(stations[:50], mode)  
 
 if __name__ == "__main__":
     main()
