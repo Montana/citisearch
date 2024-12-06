@@ -4,7 +4,7 @@
 
 This is something I built in Python to track Citibike's in NYC live. Then once rendered, makes a .html of cross references, and line maps of where the bikes have gone. No API needed. 
 
-I made this to help potentially agencies like the FBI `cat` and use `tail` or sift through data to see when the murder of Brian Thompson took place and where the Citibike went after. From my research:
+I made this to potentially help agencies like the FBI `cat` and use `tail` or sift through data to see when the murder of Brian Thompson took place and where the Citibike went after. From my research:
 
 ```bash
 Bike #421-6511 - LEFTDOCK @ 54 St & 6 Ave at 6:44 AM
